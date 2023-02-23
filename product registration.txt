@@ -1,0 +1,8 @@
+My goal is to create a small application for me and my friends to keep tracks about who's winning. The aim is to create :
+- a leaderboard only with the friends you want 
+- the winrate for each day you played 
+- a graph to show the LP loss / win 
+
+I'm  a big fan of LOL and I just wanted to train with API for my studies, so I decided to try to create this project.
+
+Best regards
