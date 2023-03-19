@@ -1,0 +1,44 @@
+body {
+    color: white;
+
+}
+a {
+    color: orange;
+}
+nav img{
+
+    width: 120px;
+    height: 120px;
+}
+nav {
+    background-color: #191922;
+    }
+
+    nav.ul {
+    color : white;
+    }
+    /*the container must be positioned relative:*/
+    .autocomplete {
+      position: relative;
+      display: inline-block;
+    }
+    label{
+      font-size : 40px;
+    }
+    input {
+      border: 1px solid transparent;
+      background-color: #f1f1f1;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    input[type=text] {
+      background-color: #f1f1f1;
+      width: 100%;
+    }
+
+    input[type=submit] {
+      background-color: DodgerBlue;
+      color: #fff;
+      cursor: pointer;
+    }

@@ -1,0 +1,11 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+
+    <h1>My Friends</h1>
+    <ul>
+        {% for friend in usernames %}
+            <li>{{ friend }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
