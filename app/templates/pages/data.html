@@ -1,6 +1,7 @@
 {% extends "partials/conteneur.html" %}
 
 {% block body %}
+<h1 class="title">Bonsoir, je suis la page de data.</h1>
 
       {% for summoner, tier, rank, lp in data %}
             <li>{{ summoner }} - {{ tier }} {{ rank }} - {{ lp }} LP</li>
