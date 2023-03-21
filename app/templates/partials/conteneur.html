@@ -7,7 +7,6 @@
 </head>
 
 <body>
- <script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -19,14 +18,14 @@
             </div>
             <div class="sub-menu">
                 <div class="icon-box">
-                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="icon"><ion-icon name="arrow-redo"></ion-icon></div>
                     <div class="text">
                         <a href='{{ url_for('add_new_user') }}'class="title">Create an Account <i class="far fa-arrow-right"></i></a>
                         <div class="sub-text">In order to save your settings.</div>
                     </div>
                 </div>
                 <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                    <div class="icon"><ion-icon name="arrow-redo"></ion-icon></div>
                     <div class="text">
                         <a href='{{ url_for('login') }}'class="title">Login <i class="far fa-arrow-right"></i></a>
                         {% if current_user.is_authenticated %}
@@ -34,11 +33,10 @@
                         {% else %}
                         <div class="sub-text">You can Log in here.</div>
                         {% endif %}
-
                     </div>
                 </div>
                 <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitch"></i></div>
+                    <div class="icon"><ion-icon name="arrow-undo"></ion-icon></div>
                     <div class="text">
                         <a href='{{ url_for('logout') }}'class="title">Logout <i class="far fa-arrow-right"></i></a>
                         <div class="sub-text">Log out of your account.</div>
@@ -52,22 +50,22 @@
                 <a href="#">My friends</a>
             </div>
             <div class="sub-menu">
-                <div class="icon-box">x
-                    <div class="icon"><i class="far fa-satellite"></i></div>
+                <div class="icon-box">
+                    <div class="icon"><ion-icon name="add"></ion-icon></div>
                     <div class="text">
                         <a href='{{ url_for('add_account') }}'class="title">Add a new friend <i class="far fa-arrow-right"></i></a>
                         <div class="sub-text">Keep tracks whith your friend list.</div>
                     </div>
                 </div>
                 <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                    <div class="icon"><ion-icon name="list"></ion-icon></div>
                     <div class="text">
                         <a href='{{ url_for('my_friends') }}'class="title">My list of friends <i class="far fa-arrow-right"></i></a>
                         <div class="sub-text">Watch every account that you follow.</div>
                     </div>
                 </div>
                 <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitch"></i></div>
+                    <div class="icon"><ion-icon name="analytics-outline"></ion-icon></div>
                     <div class="text">
                         <a href='https://example.com/forum'class="title">Leaderboard <i class="far fa-arrow-right"></i></a>
                         <div class="sub-text">Here is a leadeboard of all your friends.</div>
@@ -161,6 +159,8 @@
       </div>
     </div>
   </div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
