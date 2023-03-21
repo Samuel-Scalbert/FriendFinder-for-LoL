@@ -29,7 +29,7 @@ def login():
 
     if current_user.is_authenticated is True:
         flash("You are already logged in", "info")
-        return redirect(url_for("accueil"))
+        return redirect(url_for("home"))
 
     if form.validate_on_submit():
         username = Users.identification(

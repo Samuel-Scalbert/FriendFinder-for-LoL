@@ -7,28 +7,143 @@
 </head>
 
 <body>
+ <script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
 
-  <nav>
-    <img src="../static/Logo 04.png" alt="logo">
-    <a href="{{ url_for('home') }}">FriendFinder for LOL</a>
-    {% if current_user.is_authenticated %}
-    <a>your account right now : {{current_user.username}}</a>
-    {% endif %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <nav id="menu">
+        <div class="menu-item">
+            <div class="menu-text">
+                <a href="#">Account</a>
+            </div>
+            <div class="sub-menu">
+                <div class="icon-box">
+                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="text">
+                        <a href='{{ url_for('add_new_user') }}'class="title">Create an Account <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">In order to save your settings.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                    <div class="text">
+                        <a href='{{ url_for('login') }}'class="title">Login <i class="far fa-arrow-right"></i></a>
+                        {% if current_user.is_authenticated %}
+                        <div class="sub-text">Hello {{current_user.username}}</div>
+                        {% else %}
+                        <div class="sub-text">You can Log in here.</div>
+                        {% endif %}
 
-        <li>User :
-            <ul><a href="{{ url_for('add_new_user') }}">Create a new account </a></ul>
-            {% if current_user.is_authenticated %}
-            <ul><a href="{{ url_for('logout') }}">Logout</a></ul>
-            {% else %}
-            <ul><a href="{{ url_for('login') }}">Login</a></ul>
-            {% endif %}
-        </li>
-        <li>My account :
-            <ul><a href="{{ url_for('add_account') }}">Add an account friend </a></ul>
-            <ul><a href="{{ url_for('my_friends') }}">View my friends</a></ul>
-        </li>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitch"></i></div>
+                    <div class="text">
+                        <a href='{{ url_for('logout') }}'class="title">Logout <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Log out of your account.</div>
+                    </div>
+                </div>
+                <div class="sub-menu-holder"></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-text">
+                <a href="#">My friends</a>
+            </div>
+            <div class="sub-menu">
+                <div class="icon-box">
+                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="text">
+                        <a href='{{ url_for('add_account') }}'class="title">Follow a new account <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Add this account to your friend list.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                    <div class="text">
+                        <a href='{{ url_for('my_friends') }}'class="title">My list of friends <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Watch every account that you follow.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitch"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Leaderboard <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Here is a leadeboard of all your friends.</div>
+                    </div>
+                </div>
+                <div class="sub-menu-holder"></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-text">
+                <a href="#">Maeva</a>
+            </div>
+            <div class="sub-menu">
+                <div class="icon-box">
+                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Join our passionate community.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Follow us on twitter.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitch"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">We stream content every day.</div>
+                    </div>
+                </div>
+                <div class="sub-menu-holder"></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-text">
+                <a href="#">Anne</a>
+            </div>
+            <div class="sub-menu">
+                <div class="icon-box">
+                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Join our passionate community.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">Follow us on twitter.</div>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <div class="icon"><i class="fab fa-twitch"></i></div>
+                    <div class="text">
+                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
+                        <div class="sub-text">We stream content every day.</div>
+                    </div>
+                </div>
+                <div class="sub-menu-holder"></div>
+            </div>
+        </div>
+    </nav>
 
-  </nav>
+
+    <div id="info-box">
+        <ul>
+            <li><a target="_top" href="https://twitter.com/thisisfjolt">Follow on Twitter</a></li>
+            <li><a target="_top" href="https://fjolt.com/article/css-only-stripe-menu-with-clip">Read Article</a></li>
+            <li><a target="_top" href="https://github.com/smpnjn/stripe-like-menu">GitHub Repo</a></li>
+        </ul>
+    </div>
 
   <div>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -36,7 +151,10 @@
     <div>
       <div>
         {% for category, message in messages %}
-        <div>{{ message }}</div>
+        <div class="flash_msg">
+        <p>
+            {{ message }}
+          </p>
         {% endfor %}
       </div>
     </div>
@@ -52,6 +170,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 
