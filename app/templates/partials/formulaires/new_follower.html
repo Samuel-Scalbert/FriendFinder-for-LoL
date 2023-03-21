@@ -1,10 +1,9 @@
 <form action="{{url_for('add_account')}}" method="post" name="add_account">
     {{ form.hidden_tag() }}
+    <h3>Add a Friend</h3>
 
-    <div>
-        <label>Username</label>
-        {{ form.username(class_="form-control", placeholder_="username") }}
-    </div>
+    <label for="username">Enter the Username used in-game</label>
+    <p class='text'>{{ form.username(class_="form-control",placeholder="Username", required=True) }}</p>
 
-    <p><input type="submit" value="Ajouter"></p>
+    <p class='imput'><input type="submit" value="Add a new friend"></p>
 </form>

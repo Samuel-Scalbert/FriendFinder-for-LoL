@@ -8,17 +8,16 @@ from flask_login import login_user, current_user,  logout_user, login_required
 @app.route("/user/create_a_new_account", methods=["GET", "POST"])
 def add_new_user():
     form = AjoutUtilisateur()
-
     if form.validate_on_submit():
         statut, donnees = Users.ajout_user(
             username=clean_arg(request.form.get("username", None)),
             password=clean_arg(request.form.get("password", None))
         )
         if statut is True:
-            flash("Ajout effectué", "success")
+            flash("You created your new account", "success")
             return redirect(url_for("home"))
         else:
-            flash(",".join(donnees), "error")
+            flash(",".join(donnees), "info")
             return render_template("pages/ajout_user.html", form=form)
     else:
         return render_template("pages/ajout_user.html", form=form)
@@ -28,7 +27,7 @@ def login():
     form = Connexion()
 
     if current_user.is_authenticated is True:
-        flash("You are already logged in", "info")
+        flash("You are already logged in", "success")
         return redirect(url_for("home"))
 
     if form.validate_on_submit():
@@ -37,11 +36,11 @@ def login():
             password=clean_arg(request.form.get("password", None))
         )
         if username:
-            flash("You logged in", "success")
+            flash("Welcome back! You are logged in", "success")
             login_user(username)
             return redirect(url_for("home"))
         else:
-            flash("Wrong username", "error")
+            flash("Wrong username", "info")
             return render_template("pages/connexion.html", form=form)
 
     else:

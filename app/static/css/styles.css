@@ -1,23 +1,114 @@
 :root {
-  --menu-width: 37.5em; /* Width of menu */
+  --menu-width: 45em; /* Width of menu */
   --items: 4; /* Number of items you have */
   --item-width: calc(var(--menu-width) / var(--items));
 }
-.flash_msg{
-    height: 30px;
-    width: 50%;
-    background-color: green;
-    text-align: center;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 20%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 20px 35px;
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
+
+.alert-info {
+  color: red;
+  background-color: #edd4d4;
+  border-color: #e6c3c3;
+}
+
+.alert-error {
+  color: red;
+  background-color: #edd4d4;
+  border-color: #e6c3c3;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+body{
+    font-family:sans-serif;
+    margin:0;
+    background-color:#000;
+    overflow-x:hidden
+}
+.leaderboard{
+    max-width:55em;
+    margin-right:auto;
+    margin-left:auto;
+    display:block;
+    padding:1em;
+    padding-top:7em
+}
+table tbody tr{
+    counter-increment:row-num
+}
+table tbody tr td:first-child::before{
+    content:counter(row-num) ". "
+}
+table{
+    width:50%;
+    counter-reset:row-num;
+    margin-top:2em;
+    width:50em;
+    color:#fff;
+    margin-right:auto;
+    margin-left:auto
+}
+table thead{
+    opacity:.8
+}
+table img{
+    width:2em;
+    height:2em;
+    border-radius:100%
+}
+table td{
+    max-width:2em;
+    padding:.5em;
+    text-align:center
+}
+tbody tr{
+    box-shadow:0 2px rgba(100,100,100,.5);
+    border-radius:10px
+}
+tbody tr:hover{
+    transform:scale(1.025);
+    transition:.2s ease-in-out
+}
+tbody tr td:nth-child(2) p{
+    display:inline-block;
+    transform:translateY(-.5em);
+    padding-left:.5em;
+    text-align:left
+}
+table td:nth-child(2){
+    max-width:5em
+}
+thead, tbody tr:nth-child(even){
+    background-color:#101
+}
+
+
+
+h1{
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.logo{
+    width: 520px;
+    height: 520px;
+    mix-blend-mode: background;
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+  }
 *,
 *:before,
 *:after{
@@ -158,8 +249,12 @@ nav .menu-item {
   min-height: 7.5em;
 }
 
+nav:hover .menu-item {
+  width:1000px;
+}
+
 nav .menu-text, nav .menu-text a {
-  font-size: 1em;
+  font-size: 25px;
   color: white;
   text-decoration: none;
   text-shadow: 0 1px 5px rgba(0,0,0,0.1);
@@ -204,6 +299,7 @@ a{
 }
 
 .menu-item .sub-menu {
+  background-color: violet;
   position: absolute;
   top: 7em;
   color: rgba(0,0,0,0.5);

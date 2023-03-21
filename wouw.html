@@ -1,0 +1,165 @@
+82 % de l'espace de stockage utilisés … Vous pouvez libérer de l'espace de stockage ou en obtenir plus pour Drive, Gmail et Google Photos.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=	, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+body{
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #000;
+    overflow-x: hidden;
+}
+.leaderboard{
+    max-width: 55em;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding: 1em;
+    padding-top: 2em;
+}
+.description{
+    display: inline-block;
+    text-align: center;
+    margin: 1em;
+    color: white;
+    transform: translateY(-5em);
+}
+.search{
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    border-bottom: #0aa989 2px solid;
+    padding: .5em;
+    font-size: 1em;
+    color: white;
+    
+}
+.search:focus{
+    outline: none;
+}
+
+  table tbody tr {
+    counter-increment: row-num;
+  }
+  table tbody tr td:first-child::before {
+      content: counter(row-num) ". ";
+  }
+table{
+    width: 50%;
+    counter-reset: row-num;
+    margin-top: 2em;
+    width: 50em;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+}
+table thead{
+    opacity: .8;
+}
+table img{
+    width:2em;
+    height: 2em;
+    border-radius: 100%;
+
+}
+table td{
+    max-width: 2em;
+    padding: .5em;
+    text-align: center;
+}
+tbody tr{
+    box-shadow: 0 2px rgba(100,100,100,.5);
+    border-radius: 10px;
+}
+tbody tr:hover{
+    transform: scale(1.025);
+    transition: .2s ease-in-out;
+}
+tbody tr td:nth-child(2) p{
+    display: inline-block;
+    transform: translateY(-.5em);
+    padding-left: .5em;
+    text-align: left;
+}
+table td:nth-child(2){
+    max-width: 5em;
+}
+tbody tr:nth-child(even){
+    background-color: #101;
+}
+#winner{
+    color: gold;
+    font-weight: 800;
+}
+#runner-up{
+    color: silver;
+    font-weight: 800;
+
+}
+#second-runner-up{
+    color: #cd7f32;
+    font-weight: 800;
+}
+@media(max-width:860px){
+    .leaderboard{
+        padding: 0;
+    }
+    .theme-img{
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+    }
+    .description{
+        display: block;
+        transform: translateY(0);
+    }
+    </style>
+</head>
+<body>
+            <input id="search" class="search" placeholder="Search" oninput="search()">
+        </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>nb</td>
+                        <td>
+                            Player
+                        </td>
+                        
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td><img src="images/User1.jpg"><p> Jose Brag</p></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><img src="images/User1.jpg"><p> JoJOJO</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    function search(){
+        var text = document.getElementById('search').value;
+        const tr = document.getElementsByTagName('tr');
+        for (let i=1;i<tr.length;i++){
+            if(!tr[i].children[1].children[1].innerHTML.toLowerCase().includes(
+                text.toLowerCase()
+            )){
+                tr[i].style.display = 'none';
+            }
+            else{
+                tr[i].style.display = '';
+            }
+        }
+    }
+</script>
+</html>

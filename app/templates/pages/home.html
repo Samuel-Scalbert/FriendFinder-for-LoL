@@ -1,6 +1,14 @@
 {% extends "partials/conteneur.html" %}
 
 {% block body %}
-<h1 class="flash_msg">TESTO</h1>
+<div class="Home">
+    <img class="logo" src="{{ url_for('static', filename='/Logo_04.png') }}" alt="logo_FFLoL"/>
+    {% if current_user.is_authenticated %}
+    <H1>Welcome <p style="text-transform: uppercase">{{current_user.username}}</p> to Friend Finder for LoL</H1>
+    {% else %}
+    <H1>Welcome to Friend Finder for LoL</H1>
+    <H1>Don't forget to <a href='{{ url_for('login') }}'class="title">Login </a> or <a href='{{ url_for('add_new_user') }}'class="title">Create an Account</a></H1>
+    {% endif %}
+</div>
 
 {% endblock %}

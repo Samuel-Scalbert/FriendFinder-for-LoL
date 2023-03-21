@@ -7,7 +7,8 @@ app = Flask(__name__,template_folder='templates',static_folder='static')
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
-api_key = "RGAPI-b2136b80-3a07-4733-be69-d5cfc5cc646f"
+api_key = "RGAPI-8a97ab11-b07a-403e-b6f5-5a6a3487b090"
 login = LoginManager(app)
+login.login_view = "login"
 
 from .routes import generales, users, my_account

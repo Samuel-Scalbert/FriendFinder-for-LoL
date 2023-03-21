@@ -1,11 +1,27 @@
 {% extends "partials/conteneur.html" %}
 
 {% block body %}
+    <div class="leaderboard">
+        <h1>Here is the list of accounts that you follow</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>00</td>
+                        <td>
+                            Username
+                        </td>
 
-    <h1>My Friends</h1>
-    <ul>
-        {% for friend in usernames %}
-            <li>{{ friend }}</li>
-        {% endfor %}
-    </ul>
+                </thead>
+                <tbody>
+                {% for friend in usernames %}
+                    <tr>
+                        <td></td>
+                        <td>{{ friend }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 {% endblock %}

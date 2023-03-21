@@ -1,12 +1,12 @@
 <form action="{{url_for('add_new_user')}}" method="post" name="add_new_user">
     {{ form.hidden_tag() }}
-    <h3>Login Here</h3>
+    <h3>Create an Account</h3>
 
     <label for="username">Username</label>
-    <p class='text'>{{ form.username(class_="form-control",placeholder="Email or Phone") }}</p>
+    <p class='text'>{{ form.username(class_="form-control",placeholder="Email or Phone", required=True) }}</p>
 
     <label for="password">Password</label>
-    <p class='text'>{{ form.password(class_="form-control",placeholder="Email or Phone") }}</p>
+    <p class='text'>{{ form.password(class_="form-control",placeholder="Password", required=True) }}</p>
 
     <p class='imput'><input type="submit" value="Create a new account"></p>
 </form>

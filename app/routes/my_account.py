@@ -13,9 +13,9 @@ def add_account():
         statut, donnees = AccountFollowed.ajout_account(username=clean_arg(request.form.get("username")))
         if statut is True:
             flash("Ajout effectué", "success")
-            return redirect(url_for("home"))
+            return redirect(url_for("add_account"))
         else:
-            flash(",".join(donnees), "error")
+            flash(",".join(donnees), "info")
             return render_template("pages/new_follower.html", form=form)
     else:
         return render_template("pages/new_follower.html", form=form)
