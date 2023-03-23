@@ -13,14 +13,14 @@ class AccountFollowed(db.Model):
     def ajout_account(username):
         erreurs = []
         user_id = current_user.id
-        data = ranking_information([username])
+        data = ranking_information(username)
         if not username:
             erreurs.append("There is no username")
         unique = len(AccountFollowed.query.with_entities(AccountFollowed.username).filter_by(user_id=current_user.id,username=username).all())
         if unique > 0:
-            erreurs.append("You already follow this account")
+            erreurs.append("You already follow the account :" + username)
         if not data:
-            erreurs.append("Failed to retrieve data for this account, it could be that you used the wrong UserName")
+            erreurs.append("Failed to retrieve data for this account:"+ username +", it could be that you used the wrong UserName")
         if len(erreurs) > 0:
             return False, erreurs
 
@@ -44,6 +44,18 @@ class AccountFollowed(db.Model):
             return True, erreurs
         except Exception as erreur:
             return False, [str(erreur)]
+
+    def update_account(username):
+        erreurs = []
+        new_data = ranking_information(username)
+        old_data_tuple = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank, DataRanking.tier,DataRanking.lp).filter_by(account_followed_id=current_user.id,summoner_name=username).all()
+        old_data = list(old_data_tuple[0])
+        print(old_data,new_data)
+        if old_data[1] != new_data[1] or old_data[2]!= new_data[2] or old_data[3]!= new_data[3]:
+            DataRanking.query.filter(DataRanking.summoner_name==username).update({"lp": new_data[3]})
+            DataRanking.query.filter(DataRanking.summoner_name == username).update({"tier": new_data[2]})
+            DataRanking.query.filter(DataRanking.summoner_name == username).update({"rank": new_data[1]})
+            db.session.commit()
 
 
 class DataRanking(db.Model):

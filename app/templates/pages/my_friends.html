@@ -10,18 +10,40 @@
                         <td>
                             Username
                         </td>
+                        <td>Rank</td>
+                        <td>League Points</td>
 
                 </thead>
                 <tbody>
-                {% for friend in usernames %}
+                {% for friend_rank in list_rank %}
                     <tr>
                         <td></td>
-                        <td>{{ friend }}</td>
+                        <td>{{ friend_rank[0] }}</td>
+                        {% if friend_rank[1]=="IRON" %}
+                        <td> <p class="iron">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="BRONZE" %}
+                        <td> <p class="bronze">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="SILVER" %}
+                        <td> <p class="silver">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="GOLD" %}
+                        <td> <p class="gold">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="PLATINUM" %}
+                        <td> <p class="plat">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="DIAMOND" %}
+                        <td> <p class="diams">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="MASTER" %}
+                        <td> <p class="master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="GRANDMASTER" %}
+                        <td> <p class="grand_master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% else %}
+                        <td> <h1 class="chall">{{ friend_rank[1] }} {{ friend_rank[2] }}</h1></td>
+                        {% endif %}
+                        <td>{{ friend_rank[3] }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+        <a href='{{ url_for('update_friends') }}'><button type="button">Update</button></a>
         </div>
     </div>
-
 {% endblock %}

@@ -5,6 +5,9 @@ from ..utils.transformations import clean_arg
 from ..app import app, login
 from flask_login import login_user, current_user,  logout_user, login_required
 from sqlalchemy import case
+import roman
+from  ..API_lol.data_account import ranking_information
+
 @app.route('/my_account/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
@@ -23,14 +26,8 @@ def add_account():
 @app.route('/my_account/my_friends', methods=['GET'])
 @login_required
 def my_friends():
-    friends = AccountFollowed.query.with_entities(AccountFollowed.username).filter_by(user_id=current_user.id).all()
-    usernames = [f[0] for f in friends]
-    return render_template("pages/my_friends.html", usernames=usernames)
-
-@app.route('/my_account/copain', methods=['GET'])
-@login_required
-def all_friends():
-    all_friends = DataRanking.query.with_entities(DataRanking.summoner_name,DataRanking.rank).order_by(
+    list_rank = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank,DataRanking.tier,DataRanking.lp).filter_by(
+        account_followed_id=current_user.id).order_by(
         case([(DataRanking.rank == 'CHALLENGER', 1),
               (DataRanking.rank == 'GRANDMASTER', 2),
               (DataRanking.rank == 'MASTER', 3),
@@ -43,6 +40,24 @@ def all_friends():
              else_=10).asc(),
         DataRanking.tier.asc(),
         DataRanking.lp.desc()).all()
-    print(all_friends)
-    return render_template("pages/friebdoo.html", data=all_friends)
+    for i in range(len(list_rank)):
+        number = list_rank[i][2]
+        number_roman = roman.toRoman(number)
+        list_rank[i] = (list_rank[i][0], list_rank[i][1], number_roman, list_rank[i][3])
+    return render_template("pages/my_friends.html", list_rank=list_rank)
+
+@app.route('/my_account/my_friends/update', methods=['GET'])
+def update_friends():
+    list_username = []
+    list_update_row = DataRanking.query.with_entities(DataRanking.summoner_name).filter_by(account_followed_id=current_user.id).all()
+    for name in list_update_row:
+        list_username.append(((",".join(name))))
+    for name in list_username:
+        account_updated = AccountFollowed.update_account(name)
+    return redirect(url_for("my_friends"))
+
+@app.route('/my_account/winrate', methods=['GET'])
+@login_required
+def all_friends():
+    return render_template("pages/friebdoo.html")
 

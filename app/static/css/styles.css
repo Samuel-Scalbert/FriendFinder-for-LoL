@@ -11,6 +11,79 @@ a.gradient-text{
   font-family: sans-serif;
 }
 
+p.iron{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #304352 0%, #d7d2cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.bronze{
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #603813 0%, #b29f94 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.silver{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #BBD2C5 0%, #536976 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.gold{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #F09819 0%, #EDDE5D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.plat{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #1f4037 0%, #99f2c8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.diams{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #1488CC 0%, #2B32B2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.master{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #AA076B 0%, #61045F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+p.grand_master{
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ED213A 0%, #93291E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+h1.chall{
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #3D7EAA 0%, #FFE47A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
 .alert-success {
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -43,6 +116,21 @@ a.gradient-text{
     border-radius: 0.25rem;
 }
 
+.closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 45px;
+    line-height: 20px;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.closebtn:hover {
+    color: white;
+}
+
 body{
     font-family:sans-serif;
     margin:0;
@@ -55,7 +143,7 @@ body{
     margin-left:auto;
     display:block;
     padding:1em;
-    padding-top:7em
+    padding-top:3em
 }
 table tbody tr{
     counter-increment:row-num
@@ -82,7 +170,7 @@ table img{
 }
 table td{
     max-width:2em;
-    padding:.5em;
+    padding: 1em;
     text-align:center
 }
 tbody tr{
@@ -111,7 +199,6 @@ tbody tr:nth-child(odd){
 
 h1{
   color: white;
-  font-family: sans-serif;
   text-align: center;
 }
 
