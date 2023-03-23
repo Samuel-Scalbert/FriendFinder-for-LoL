@@ -23,7 +23,6 @@ def ranking_information(summoner_list_name: list):
             presence_of_soloq_data = False
             for data_SOLOQ in data_rank:
                 if data_SOLOQ['queueType'] == "RANKED_SOLO_5x5":
-                    print(summoner, data_SOLOQ['tier'], data_SOLOQ['rank'], data_SOLOQ['leaguePoints'], "LP")
                     rank = data_SOLOQ['rank']
                     rank_roman = roman.fromRoman(rank)
                     ## here we save the informations for each account

@@ -1,0 +1,27 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+    <div class="leaderboard">
+        <h1>friendo</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>00</td>
+                        <td>
+                            Username
+                        </td>
+
+                </thead>
+                <tbody>
+                {% for friend in data %}
+                    <tr>
+                        <td></td>
+                        <td>{{ friend }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
