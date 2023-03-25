@@ -6,7 +6,7 @@ from ..app import app, login
 from flask_login import login_user, current_user,  logout_user, login_required
 from sqlalchemy import case
 import roman
-from  ..API_lol.data_account import ranking_information
+from  ..API_lol.winrate_of_the_day import winrate
 
 @app.route('/my_account/add_account', methods=['GET', 'POST'])
 @login_required
@@ -32,7 +32,7 @@ def my_friends():
               (DataRanking.rank == 'GRANDMASTER', 2),
               (DataRanking.rank == 'MASTER', 3),
               (DataRanking.rank == 'DIAMOND', 4),
-              (DataRanking.rank == 'PLATINIUM', 5),
+              (DataRanking.rank == 'PLATINUM', 5),
               (DataRanking.rank == 'GOLD', 6),
               (DataRanking.rank == 'SILVER', 7),
               (DataRanking.rank == 'BRONZE', 8),
@@ -58,6 +58,19 @@ def update_friends():
 
 @app.route('/my_account/winrate', methods=['GET'])
 @login_required
-def all_friends():
-    return render_template("pages/friebdoo.html")
+def winrate_friends():
+    list_username = []
+    account_updated = []
+    list_update_row = DataRanking.query.with_entities(DataRanking.summoner_name).filter_by(account_followed_id=current_user.id).all()
+    for name in list_update_row:
+        list_username.append(((",".join(name))))
+    for name in list_username:
+        winrates = winrate(name)
+        if winrates[1] == False:
+            flash('The API might be over flooded right now wait a minute', "info")
+            redirect(url_for("home"))
+        else:
+            account_updated.append(winrates[0])
+            print(account_updated)
+    return render_template("pages/winrate.html", account_updated=account_updated)
 

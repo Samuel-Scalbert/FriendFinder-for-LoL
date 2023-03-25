@@ -1,0 +1,27 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+
+<div class="wr">
+    {%for winrate in account_updated%}
+    {%if winrate[0]==None%}
+        <div class="box-container">
+        <div class="box">
+        <p><span class="no_data">No solo queue today for {{winrate[1]}}</span></p>
+        </div>
+    {%elif (((winrate[0])|int)|round(1, 'ceil')) > 50%}
+        <div class="box-container">
+        <div class="box">
+        <p><span class="percentage green">{{winrate[0]|int|round}}%</span> is the winrate for {{winrate[2]}} in {{winrate[1]}} games today</p>
+        </div>
+    {%elif (((winrate[0])|int)|round(1, 'ceil')) < 50%}
+        <div class="box-container">
+        <div class="box">
+        <p><span class="percentage red">{{winrate[0]|int|round}}%</span> is the winrate for {{winrate[2]}} in {{winrate[1]}} games today</p>
+        </div>
+    {%endif%}
+    {% endfor %}
+
+</div>
+
+{% endblock %}

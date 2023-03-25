@@ -20,23 +20,23 @@
                         <td></td>
                         <td>{{ friend_rank[0] }}</td>
                         {% if friend_rank[1]=="IRON" %}
-                        <td> <p class="iron">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank iron">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="BRONZE" %}
-                        <td> <p class="bronze">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank bronze">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="SILVER" %}
-                        <td> <p class="silver">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank silver">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="GOLD" %}
-                        <td> <p class="gold">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank gold">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="PLATINUM" %}
-                        <td> <p class="plat">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank plat">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="DIAMOND" %}
-                        <td> <p class="diams">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank diams">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="MASTER" %}
-                        <td> <p class="master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="GRANDMASTER" %}
-                        <td> <p class="grand_master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        <td> <p class="rank grand_master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% else %}
-                        <td> <h1 class="chall">{{ friend_rank[1] }} {{ friend_rank[2] }}</h1></td>
+                        <td> <p class="rank chall">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% endif %}
                         <td>{{ friend_rank[3] }}</td>
                     </tr>

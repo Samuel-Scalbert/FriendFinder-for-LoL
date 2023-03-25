@@ -3,6 +3,15 @@
   --items: 4; /* Number of items you have */
   --item-width: calc(var(--menu-width) / var(--items));
 }
+
+html {
+  height: 100%;
+  background-image: linear-gradient(45deg, #191922, #0b0b92);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 a.gradient-text{
   text-transform: uppercase;
   background: linear-gradient(to right, #30CFD0 0%, #C026DD 100%);
@@ -10,78 +19,39 @@ a.gradient-text{
   -webkit-text-fill-color: transparent;
   font-family: sans-serif;
 }
-
-p.iron{
+p.rank{
   text-transform: uppercase;
-  background: linear-gradient(to right, #304352 0%, #d7d2cc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 900;
+  font-weight: bolder;
+  font-size: larger;
 }
-
-p.bronze{
-  text-transform: uppercase;
-  background-image: linear-gradient(to right, #603813 0%, #b29f94 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.iron{
+  background: linear-gradient(to top, #514541 0%, #BFB6A6 100%);
 }
-
-p.silver{
-  text-transform: uppercase;
-  background: linear-gradient(to right, #BBD2C5 0%, #536976 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.bronze{
+  background-image: linear-gradient(to top, #603813 0%, #b29f94 100%);
 }
-
-p.gold{
-  text-transform: uppercase;
-  background: linear-gradient(to right, #F09819 0%, #EDDE5D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.silver{
+  background: linear-gradient(to top, #475258 0%, #B3C1C7 100%);
 }
-
-p.plat{
-  text-transform: uppercase;
-  background: linear-gradient(to right, #1f4037 0%, #99f2c8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.gold{
+  background: linear-gradient(to top, #F09819 0%, #EDDE5D 100%);
 }
-
-p.diams{
-  text-transform: uppercase;
-  background: linear-gradient(to right, #1488CC 0%, #2B32B2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.plat{
+  background: linear-gradient(to top, #1f4037 0%, #99f2c8 100%);
 }
-
-p.master{
-  text-transform: uppercase;
-  background: linear-gradient(to right, #AA076B 0%, #61045F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.diams{
+  background: linear-gradient(to top, #2B32B2 0%, #1488CC 100%);
 }
-
-p.grand_master{
-  text-transform: uppercase;
-  background: linear-gradient(to right, #ED213A 0%, #93291E 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.master{
+  background: linear-gradient(to top, #61045F 0%, #AA076B 100%);
 }
-
-h1.chall{
-  font-size: 1rem;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #3D7EAA 0%, #FFE47A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.grand_master{
+  background: linear-gradient(to top, #93291E 0%, #ED213A 100%);
+}
+.chall{
+  background: linear-gradient(to top, #DBB666 0%, #6FF8FF 100%);
 }
 
 .alert-success {
@@ -109,6 +79,7 @@ h1.chall{
 }
 
 .alert {
+    margin-top: 1rem;
     position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
@@ -131,12 +102,6 @@ h1.chall{
     color: white;
 }
 
-body{
-    font-family:sans-serif;
-    margin:0;
-    background-color:#000;
-    overflow-x:hidden
-}
 .leaderboard{
     max-width:55em;
     margin-right:auto;
@@ -169,7 +134,7 @@ table img{
     border-radius:100%
 }
 table td{
-    max-width:2em;
+    max-width:4em;
     padding: 1em;
     text-align:center
 }
@@ -191,11 +156,6 @@ tbody tr td:nth-child(2) p{
 table td:nth-child(2){
     max-width:5em
 }
-tbody tr:nth-child(odd){
-    background-color:#030C7F;
-}
-
-
 
 h1{
   color: white;
@@ -217,9 +177,7 @@ h1{
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: #080710;
-}
+
 .background{
     width: 430px;
     height: 520px;
@@ -312,27 +270,72 @@ p.input{
 }
 
 body {
-
   margin: 0;
   padding: 0;
-  background: linear-gradient(45deg, #191922,#0b0b92);
   font-family: 'Roboto', sans-serif;
   height: 100vh;
-  overflow: hidden;
   width: 100vw;
 }
 
+div.wr {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+}
+
+.box-container {
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 4rem;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+
+.box {
+    align-items: center;
+    border-radius: 0.6rem;
+    padding: 1rem;
+    display: flex;
+    background-color: rgb(49, 41, 85);
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100px;
+    box-shadow: rgba(21, 11, 37, 0.5) 0px 2px 10px 0px;
+    border: 1px solid var(--general-base-100);
+    box-sizing: border-box;
+}
+.percentage {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+.name {
+    font-size: 1.2rem;
+}
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+
 nav {
+  position: sticky;
   width: var(--menu-width);
   display: flex;
   transform-style: preserve-3d;
   justify-content: space-evenly;
-  position: relative;
   z-index: 2;
   margin: 0px auto;
   perspective: 2000px;
   flex-wrap: wrap;
-  top: 3em;
+  top: 1em;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 nav .menu-item {
@@ -345,6 +348,7 @@ nav .menu-item {
   box-sizing: border-box;
   padding: 1em 1.5em;
   justify-content: center;
+  align-items: center;
   perspective: 200px;
   letter-spacing: 0.5px;
   min-height: 7.5em;
@@ -625,9 +629,9 @@ nav .menu-item:nth-of-type(3).highlight:hover ~ #sub-menu-container #sub-menu-ho
 nav .menu-item.highlight:hover ~ #sub-menu-container #sub-menu-holder #sub-menu-bottom { opacity: 1; }
 
 #info-box {
-  position: absolute;
-  bottom: 2em;
-  right: 2em;
+  position: sticky;
+  bottom: 0em;
+  right: 0em;
 }
 
 #info-box ul {
