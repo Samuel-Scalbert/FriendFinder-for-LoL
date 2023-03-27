@@ -1,9 +1,0 @@
-{% extends "partials/conteneur.html" %}
-
-{% block body %}
-
-      {% for summoner, tier, rank, lp in data %}
-            <li>{{ summoner }} - {{ tier }} {{ rank }} - {{ lp }} LP</li>
-        {% endfor %}
-
-{% endblock %}

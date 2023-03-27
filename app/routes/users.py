@@ -1,9 +1,11 @@
 from flask import url_for, render_template, redirect, request, flash
-from ..models.data_base import Users, AccountFollowed
-from ..models.formulaires import AjoutUtilisateur, Connexion, NewFollower
+from ..models.data_base import Users
+from ..models.formulaires import AjoutUtilisateur, Connexion
 from ..utils.transformations import clean_arg
-from ..app import app, login
-from flask_login import login_user, current_user,  logout_user, login_required
+from ..app import app
+from flask_login import login_user, current_user,  logout_user
+from  ..API_lol.API_check import API_check
+
 
 @app.route("/user/create_a_new_account", methods=["GET", "POST"])
 def add_new_user():
@@ -38,6 +40,11 @@ def login():
         if username:
             flash("Welcome back! You are logged in", "success")
             login_user(username)
+            if API_check() == True:
+                flash('The API is working fine !', "success")
+                return redirect(url_for("home"))
+            else:
+                flash('The API might be over flooded right now wait a minute please', "info")
             return redirect(url_for("home"))
         else:
             flash("Wrong username", "info")

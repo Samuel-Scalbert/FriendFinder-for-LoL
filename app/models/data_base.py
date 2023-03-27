@@ -46,7 +46,6 @@ class AccountFollowed(db.Model):
             return False, [str(erreur)]
 
     def update_account(username):
-        erreurs = []
         new_data = ranking_information(username)
         old_data_tuple = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank, DataRanking.tier,DataRanking.lp).filter_by(account_followed_id=current_user.id,summoner_name=username).all()
         old_data = list(old_data_tuple[0])

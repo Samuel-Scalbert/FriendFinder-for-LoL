@@ -1,8 +1,6 @@
-from ..app import app, db, api_key, login
-from flask import url_for, render_template, redirect, request, flash
-from sqlalchemy import or_
-from ..models.data_base import Users
-from  ..API_lol.data_account import ranking_information
+from ..app import app, login
+from flask import url_for, render_template, redirect, flash
+
 
 
 @app.route("/")

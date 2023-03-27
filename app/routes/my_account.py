@@ -1,27 +1,32 @@
 from flask import url_for, render_template, redirect, request, flash
-from ..models.data_base import Users, AccountFollowed, DataRanking
-from ..models.formulaires import AjoutUtilisateur, Connexion, NewFollower
+from ..models.data_base import  AccountFollowed, DataRanking
+from ..models.formulaires import NewFollower
 from ..utils.transformations import clean_arg
-from ..app import app, login
-from flask_login import login_user, current_user,  logout_user, login_required
+from ..app import app
+from flask_login import  current_user, login_required
 from sqlalchemy import case
 import roman
 from  ..API_lol.winrate_of_the_day import winrate
+from  ..API_lol.API_check import API_check
 
 @app.route('/my_account/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
-    form = NewFollower()
-    if form.validate_on_submit():
-        statut, donnees = AccountFollowed.ajout_account(username=clean_arg(request.form.get("username")))
-        if statut is True:
-            flash("Ajout effectué", "success")
-            return redirect(url_for("add_account"))
+    if API_check() == True:
+        form = NewFollower()
+        if form.validate_on_submit():
+            statut, donnees = AccountFollowed.ajout_account(username=clean_arg(request.form.get("username")))
+            if statut is True:
+                flash("This account has been added to your friend list !", "success")
+                return redirect(url_for("add_account"))
+            else:
+                flash(",".join(donnees), "info")
+                return render_template("pages/new_follower.html", form=form)
         else:
-            flash(",".join(donnees), "info")
             return render_template("pages/new_follower.html", form=form)
     else:
-        return render_template("pages/new_follower.html", form=form)
+        flash('The API might be over flooded right now wait a minute please', "info")
+        return render_template("pages/home.html")
 
 @app.route('/my_account/my_friends', methods=['GET'])
 @login_required
@@ -48,29 +53,38 @@ def my_friends():
 
 @app.route('/my_account/my_friends/update', methods=['GET'])
 def update_friends():
-    list_username = []
-    list_update_row = DataRanking.query.with_entities(DataRanking.summoner_name).filter_by(account_followed_id=current_user.id).all()
-    for name in list_update_row:
-        list_username.append(((",".join(name))))
-    for name in list_username:
-        account_updated = AccountFollowed.update_account(name)
-    return redirect(url_for("my_friends"))
+    if API_check() == True:
+        list_username = []
+        list_update_row = DataRanking.query.with_entities(DataRanking.summoner_name).filter_by(account_followed_id=current_user.id).all()
+        for name in list_update_row:
+            list_username.append(((",".join(name))))
+        for name in list_username:
+            AccountFollowed.update_account(name)
+        return redirect(url_for("my_friends"))
+    else:
+        flash('The API might be over flooded right now wait a minute please', "info")
+        return render_template("pages/home.html")
 
 @app.route('/my_account/winrate', methods=['GET'])
 @login_required
 def winrate_friends():
+    flashs = False
     list_username = []
     account_updated = []
     list_update_row = DataRanking.query.with_entities(DataRanking.summoner_name).filter_by(account_followed_id=current_user.id).all()
     for name in list_update_row:
-        list_username.append(((",".join(name))))
+        list_username.append((",".join(name)))
     for name in list_username:
+        if not API_check():
+            flash('The API might be over flooded right now wait a minute please', "info")
+            break
         winrates = winrate(name)
-        if winrates[1] == False:
-            flash('The API might be over flooded right now wait a minute', "info")
-            redirect(url_for("home"))
+        print(winrates)
+        print(flash)
+        if flashs == True:
+            flash('The API might be over flooded right now wait a minute please', "info")
+            return render_template("pages/winrate.html", account_updated=account_updated)
         else:
-            account_updated.append(winrates[0])
-            print(account_updated)
+            account_updated.append(winrates)
     return render_template("pages/winrate.html", account_updated=account_updated)
 
