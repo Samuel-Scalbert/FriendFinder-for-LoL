@@ -5,9 +5,7 @@ import time
 from flask import flash
 
 def winrate(summoner):
-
 ## set the time of today
-
     now = datetime.datetime.now()
 
     start_of_day = datetime.datetime(
@@ -37,8 +35,7 @@ def winrate(summoner):
     l = 0
     wr = 0
     winrate = []
-    data_summoner = requests.get(
-        'https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + summoner + '?api_key=' + api_key).json()
+    data_summoner = requests.get('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + summoner + '?api_key=' + api_key).json()
     if "id" in data_summoner:
         puuid_summoner = data_summoner.get("puuid")
 
@@ -48,7 +45,6 @@ def winrate(summoner):
             'https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/' + puuid_summoner + '/ids?queue=' + '420' + '&startTime=' + start_of_day_epoch + '&endTime=' + end_of_day_epoch + '&count=20&api_key=' + api_key).json()
 
         ## check if there is any match
-
         if len(matches_id) != 0:
             for match_id in matches_id:
             ## check the result of the game for the summoner

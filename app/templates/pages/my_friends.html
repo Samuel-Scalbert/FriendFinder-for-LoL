@@ -12,6 +12,7 @@
                         </td>
                         <td>Rank</td>
                         <td>League Points</td>
+                        <td>LP Gains</td>
 
                 </thead>
                 <tbody>
@@ -39,11 +40,17 @@
                         <td> <p class="rank chall">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% endif %}
                         <td>{{ friend_rank[3] }}</td>
+                            {% if friend_rank[4] != 0 and friend_rank[4] > 0  %}
+                            <td>+{{ friend_rank[4] }}</td>
+                            {% else %}
+                            <td>{{ friend_rank[4] }}</td>
+                            {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-        <a href='{{ url_for('update_friends') }}'><button type="button">Update</button></a>
-        </div>
+          <div id='buttons_update'>
+            <a class='buttons_update' href='{{ url_for('update_friends') }}'>update</a>
+          </div>
     </div>
 {% endblock %}

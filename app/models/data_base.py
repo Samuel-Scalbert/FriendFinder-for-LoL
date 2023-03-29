@@ -49,8 +49,9 @@ class AccountFollowed(db.Model):
         new_data = ranking_information(username)
         old_data_tuple = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank, DataRanking.tier,DataRanking.lp).filter_by(account_followed_id=current_user.id,summoner_name=username).all()
         old_data = list(old_data_tuple[0])
-        print(old_data,new_data)
         if old_data[1] != new_data[1] or old_data[2]!= new_data[2] or old_data[3]!= new_data[3]:
+            league_points = new_data[3] - old_data[3] + (new_data[2] - old_data[2]) * 100
+            DataRanking.query.filter(DataRanking.summoner_name == username).update({"lp_diff": league_points})
             DataRanking.query.filter(DataRanking.summoner_name==username).update({"lp": new_data[3]})
             DataRanking.query.filter(DataRanking.summoner_name == username).update({"tier": new_data[2]})
             DataRanking.query.filter(DataRanking.summoner_name == username).update({"rank": new_data[1]})
@@ -64,6 +65,7 @@ class DataRanking(db.Model):
     summoner_name = db.Column(db.String(255), nullable=False)
     rank = db.Column(db.String(255))
     account_followed_id = db.Column(db.Integer, db.ForeignKey('account_followed.id'))
+    lp_diff = db.Column(db.Integer)
 
     def __repr__(self):
         return f"DataRanking(id={self.id}, summoner_name='{self.summoner_name}')"

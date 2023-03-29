@@ -6,8 +6,8 @@ from flask_login import LoginManager
 app = Flask(__name__,template_folder='templates',static_folder='static')
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-api_key = "RGAPI-7f91e36e-f315-4560-aee7-ec9ae070965a"
+api_key = "RGAPI-821239eb-7e1a-408b-b850-a96c8cd47d1c"
 login = LoginManager(app)
 login.login_view = "login"
 
-from .routes import generales, users, my_account
+from .routes import home, users, my_friends

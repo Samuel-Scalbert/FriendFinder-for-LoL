@@ -2,7 +2,6 @@ from ..app import app, login
 from flask import url_for, render_template, redirect, flash
 
 
-
 @app.route("/")
 @app.route("/home")
 def home():
