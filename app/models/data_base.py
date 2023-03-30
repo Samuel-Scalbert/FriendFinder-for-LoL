@@ -2,7 +2,7 @@ from ..app import app, db, login
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin, current_user
 from  ..API_lol.data_account import ranking_information
-from sqlalchemy import func
+from  ..API_lol.LP_gains import LP_Gains
 
 
 class AccountFollowed(db.Model):
@@ -50,7 +50,8 @@ class AccountFollowed(db.Model):
         old_data_tuple = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank, DataRanking.tier,DataRanking.lp).filter_by(account_followed_id=current_user.id,summoner_name=username).all()
         old_data = list(old_data_tuple[0])
         if old_data[1] != new_data[1] or old_data[2]!= new_data[2] or old_data[3]!= new_data[3]:
-            league_points = new_data[3] - old_data[3] + (new_data[2] - old_data[2]) * 100
+            league_points = LP_Gains(old_data,new_data)
+            print(league_points)
             DataRanking.query.filter(DataRanking.summoner_name == username).update({"lp_diff": league_points})
             DataRanking.query.filter(DataRanking.summoner_name==username).update({"lp": new_data[3]})
             DataRanking.query.filter(DataRanking.summoner_name == username).update({"tier": new_data[2]})

@@ -5,7 +5,7 @@ function generateCircleChart(selector, value) {
       datasets: [{
         data: [value, 100-value],
         backgroundColor: [
-          value > 50 ? 'rgb(0, 255, 0)' : 'rgb(255, 0, 0)',
+          value > 50 ? 'rgb(220, 106, 245)' : 'rgb(255, 0, 0)',
           'rgba(0,0,0,.05)'
         ],
         borderWidth:0,

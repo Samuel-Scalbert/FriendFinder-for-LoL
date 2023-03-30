@@ -6,7 +6,7 @@ from flask_login import LoginManager
 app = Flask(__name__,template_folder='templates',static_folder='static')
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-api_key = "RGAPI-821239eb-7e1a-408b-b850-a96c8cd47d1c"
+api_key = "RGAPI-7c178fe5-2791-459a-a50d-d0476caf72f2"
 login = LoginManager(app)
 login.login_view = "login"
 
