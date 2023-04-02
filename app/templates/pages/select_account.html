@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Account</title>
+</head>
+<body>
+    <h1>Select Account</h1>
+    <form action="{{url_for('select_account')}}" method="post" name="select_account">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+        {{ form.account.label }} {{ form.account() }}
+        <br><br>
+        <p class='imput'><input type="submit" value="Submit"></p>
+    </form>
+</body>
+</html>
