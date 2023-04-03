@@ -10,7 +10,7 @@ import roman
 import json
 
 @app.route("/")
-@app.route('match_records', methods=["GET","POST"])
+@app.route('/match_records', methods=["GET","POST"])
 #Goal: catching important rates for a given match: KDA, Creep score, Magic blows' success and damages, and Gold entries.
 @login_required
 def get_match():
@@ -24,11 +24,11 @@ def get_match():
                 
         except FileNotFoundError:
                 flash("Did you copy the right PUUID?", "info") #Ou deviez-vous inscrire "puuid" à la place de "donnees"?
-                return render_template("pages/match_finder.html", form=form)
+                return render_template("pages/match_records.html", form=form)
                 
         except SyntaxError:
                 flash("Votre dev ne sait pas écrire une requête en .get. Invoquez Saint Samuel Scalbert.")
-                return render_template("pages/match_finder.html", form=form)
+                return render_template("pages/match_records.html", form=form)
                         
         if statut is True:
                 match = requests.get(f"https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/{donnees}/ids?queue=420&type=ranked&start=0&count=1&api_key={api_key}").json()
@@ -73,7 +73,7 @@ def get_match():
 
                                 data = match_records
 
-                        return render_template("pages/match_records.html/body/div[class='match']", data=data)
+                        return render_template("pages/match_records.html", data=data)
 
 
 

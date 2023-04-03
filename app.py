@@ -10,7 +10,7 @@ app = Flask(
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
-api_key = "RGAPI-30726939-4ebb-483f-9522-e6824a3ca142"
+api_key = "RGAPI-b5ee5978-66cc-45b2-b10c-07a4889b46d8"
 login = LoginManager(app)
 
 from .routes import generales, users, add_account, mastery, match_records
