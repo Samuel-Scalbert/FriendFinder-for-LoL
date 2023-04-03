@@ -1,0 +1,15 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+
+<div class="match">   
+     <!-- Tableau match 1-->
+    <table>
+        <tr><td>Match</td><td>Champion</td><td>KDA</td><td>Golds</td><td>Creep Score</td><td>Magic Damages Update</td></tr>
+        {% for data in data %}
+        <tr><td>{% data[0] %}</td><td>{% data[1] %}</td><td>{% data[2] %}</td><td>{% data[3] %}</td><td>{% data[4] %}</td><td>{% data[5] %}</td></tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
