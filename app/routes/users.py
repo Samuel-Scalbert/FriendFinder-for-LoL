@@ -1,9 +1,10 @@
 from flask import url_for, render_template, redirect, request, flash
 from ..models.data_base import Users
-from ..models.formulaires import AjoutUtilisateur, Connexion
+from ..models.formulaires import AjoutUtilisateur, Connexion, MatchFinder
 from ..utils.transformations import clean_arg
+import requests
 from ..app import app
-from flask_login import login_user, current_user,  logout_user
+from flask_login import login_user, current_user,  logout_user, login_required
 from  ..API_lol.API_check import API_check
 
 

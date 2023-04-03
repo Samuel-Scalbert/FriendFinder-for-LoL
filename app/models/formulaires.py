@@ -20,3 +20,6 @@ class ChooseAccount(FlaskForm):
         super().__init__(*args, **kwargs)
         self.user_id = user_id
         self.account.choices = [(account.id, account.username) for account in AccountFollowed.query.filter_by(user_id=user_id).all()]
+
+class MatchFinder(FlaskForm):
+    puuid = StringField("puuid", validators=[])
