@@ -31,18 +31,20 @@ def add_account():
 @app.route('/my_friends/list_of_friends', methods=['GET'])
 @login_required
 def list_of_friends():
-    list_rank = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank,DataRanking.tier,DataRanking.lp,DataRanking.lp_diff).filter_by(
+    list_rank = DataRanking.query.with_entities(DataRanking.summoner_name, DataRanking.rank, DataRanking.tier,DataRanking.lp, DataRanking.lp_diff).filter_by(
         account_followed_id=current_user.id).order_by(
-        case([(DataRanking.rank == 'CHALLENGER', 1),
-              (DataRanking.rank == 'GRANDMASTER', 2),
-              (DataRanking.rank == 'MASTER', 3),
-              (DataRanking.rank == 'DIAMOND', 4),
-              (DataRanking.rank == 'PLATINUM', 5),
-              (DataRanking.rank == 'GOLD', 6),
-              (DataRanking.rank == 'SILVER', 7),
-              (DataRanking.rank == 'BRONZE', 8),
-              (DataRanking.rank == 'IRON', 9)],
-             else_=10).asc(),
+        case(
+            (DataRanking.rank == 'CHALLENGER', 1),
+            (DataRanking.rank == 'GRANDMASTER', 2),
+            (DataRanking.rank == 'MASTER', 3),
+            (DataRanking.rank == 'DIAMOND', 4),
+            (DataRanking.rank == 'PLATINUM', 5),
+            (DataRanking.rank == 'GOLD', 6),
+            (DataRanking.rank == 'SILVER', 7),
+            (DataRanking.rank == 'BRONZE', 8),
+            (DataRanking.rank == 'IRON', 9),
+            else_=10
+        ).asc(),
         DataRanking.tier.asc(),
         DataRanking.lp.desc()).all()
     for i in range(len(list_rank)):

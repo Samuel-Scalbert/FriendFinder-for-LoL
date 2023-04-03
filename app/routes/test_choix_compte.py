@@ -6,7 +6,7 @@ from flask_login import current_user
 
 @app.route("/test/chooseaccount", methods=['GET', 'POST', 'HEAD'])
 def select_account():
-    form = ChooseAccount(current_user.id)ghfty
+    form = ChooseAccount(current_user.id)
     form.account.choices = [(account.id, account.username) for account in AccountFollowed.query.filter_by(user_id=current_user.id).all()]
     if form.validate_on_submit():
         selected_account_id = form.account.data
