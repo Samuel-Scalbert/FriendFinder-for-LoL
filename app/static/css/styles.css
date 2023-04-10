@@ -839,3 +839,34 @@ a.buttons_update:hover, a.buttons_update:active {
 
 .red {
   color: red;}
+
+  .match_records{
+    table-layout: fixed;
+    width:50%;
+    margin-top:2em;
+    width:50em;
+    color:#fff;
+ 
+    border: 1px solid #8989ff;
+    border-radius: 1.5em;
+    margin-right:auto;
+    margin-left:auto;  
+}
+
+.match_records thead p {
+    font-family: "Tomsk","Tw Cen MT";
+    text-align: center;
+    font-size: 1.1em;
+    color: #8989ff;
+}
+
+.match_records tbody p {
+    font-family: "Tomsk","Tw Cen MT";
+    text-align: center;
+    font-size: 1em;
+    color: white;
+}
+
+.match_records td{
+    max-width:8em;
+}  
