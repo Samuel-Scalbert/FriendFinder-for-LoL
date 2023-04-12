@@ -8,6 +8,7 @@ from flask_login import login_user, current_user,  logout_user, login_required
 from  ..API_lol.match_records import match_records
 
 @app.route("/match/chooseaccount", methods=['GET', 'POST', 'HEAD'])
+@login_required
 def select_account():
     form = ChooseAccount(current_user.id)
     form.account.choices = [(account.id, account.username) for account in AccountFollowed.query.filter_by(user_id=current_user.id).all()]
@@ -16,12 +17,12 @@ def select_account():
         selected_account = AccountFollowed.query.get(selected_account_id)
         selected_username = selected_account.username
         return redirect(url_for('get_match', username=selected_username))
-    return render_template('pages/select_account.html', form=form)
+    return render_template('pages/select_account_match.html', form=form)
 @app.route('/match/match_records/<username>', methods=["GET", "POST"])
 # Goal: catching important rates for a given match: KDA, Creep score, Magic blows' success and damages, and Gold entries.
 @login_required
 def get_match(username):
     data = match_records(username)
     print(data)
-    return render_template("pages/match_records.html", data=data)
+    return render_template("pages/match_records.html", data=data, username=username)
 

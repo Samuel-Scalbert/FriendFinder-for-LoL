@@ -14,7 +14,7 @@
     <nav id="menu">
         <div class="menu-item">
             <div class="menu-text">
-                <a href="#">Account</a>
+                <a href='{{ url_for('login') }}'>Account</a>
             </div>
             <div class="sub-menu">
                 <div class="icon-box">
@@ -47,7 +47,7 @@
         </div>
         <div class="menu-item">
             <div class="menu-text">
-                <a href="#">My friends</a>
+                <a href="{{ url_for('list_of_friends') }}">My friends</a>
             </div>
             <div class="sub-menu">
                 <div class="icon-box">
@@ -76,28 +76,14 @@
         </div>
         <div class="menu-item">
             <div class="menu-text">
-                <a href="#">Mastery</a>
+                <a href="{{ url_for('select_account_mastery') }}">Mastery</a>
             </div>
             <div class="sub-menu">
                 <div class="icon-box">
-                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="icon"><ion-icon name="trophy"></ion-icon></div>
                     <div class="text">
-                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
-                        <div class="sub-text">Join our passionate community.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
-                    <div class="text">
-                        <a href='{{ url_for('select_account') }}'class="title">Forum <i class="far fa-arrow-right"></i></a>
-                        <div class="sub-text">Follow us on twitter.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitch"></i></div>
-                    <div class="text">
-                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
-                        <div class="sub-text">We stream content every day.</div>
+                        <a href='{{ url_for('select_account_mastery') }}' class="title">Points</a>
+                        <div class="sub-text">What is the most played champion for one account?</div>
                     </div>
                 </div>
                 <div class="sub-menu-holder"></div>
@@ -105,28 +91,14 @@
         </div>
         <div class="menu-item">
             <div class="menu-text">
-                <a href="#">Match Recap</a>
+                <a href='{{ url_for('select_account') }}'>Recap</a>
             </div>
             <div class="sub-menu">
                 <div class="icon-box">
-                    <div class="icon"><i class="far fa-satellite"></i></div>
+                    <div class="icon"><ion-icon name="bookmarks"></ion-icon></div>
                     <div class="text">
-                        <a href='{{ url_for('select_account') }}'class="title">Forum <i class="far fa-arrow-right"></i></a>
-                        <div class="sub-text">Join our passionate community.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
-                    <div class="text">
-                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
-                        <div class="sub-text">Follow us on twitter.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitch"></i></div>
-                    <div class="text">
-                        <a href='https://example.com/forum'class="title">Forum <i class="far fa-arrow-right"></i></a>
-                        <div class="sub-text">We stream content every day.</div>
+                        <a href='{{ url_for('select_account') }}'class="title">Match Records</a>
+                        <div class="sub-text">Get a recap for the last 5 Ranked Matches.</div>
                     </div>
                 </div>
                 <div class="sub-menu-holder"></div>

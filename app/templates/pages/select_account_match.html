@@ -2,13 +2,15 @@
 
 {% block body %}
 
-<h1>Select Account</h1>
 <form action="{{url_for('select_account')}}" method="post" name="select_account">
     {{ form.hidden_tag() }}
     {{ form.csrf_token }}
-    {{ form.account.label }} {{ form.account() }}
+    <h3 class="select">Match Recap</h3>
+    {{ form.account() }}
     <br><br>
-    <p class='imput'><input type="submit" value="Submit"></p>
+    <div id='buttons_update'>
+    <input class="buttons_update" type="submit" value="Submit">
+    </div>
 </form>
 
 {% endblock %}

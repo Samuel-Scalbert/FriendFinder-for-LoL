@@ -121,8 +121,20 @@ a{
   clip-path: inset(0 10em 10em 15em);
   opacity: 0;
   font-weight: initial;
-  padding: 1.5em;
+  padding: 1em;
   transition: all 0.25s ease-out, opacity 0.25s ease-in, margin-left 0.25s ease-out, clip-path 0.15s ease-out;
+}
+
+select{
+        display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .menu-item .sub-menu.double {
@@ -225,6 +237,9 @@ form {
   height: 4em;
   row-gap: 0;
   line-height: 1em;
+  display: flex;
+    align-items: center;
+    align-content: center;
 }
 
 .menu-item .icon-box .text ion-icon {
@@ -460,10 +475,11 @@ table thead{
     opacity:.8
 }
 table img{
-    width:2em;
-    height:2em;
-    border-radius:100%
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
 }
+
 table td{
     max-width:4em;
     padding: 1em;
@@ -473,11 +489,14 @@ tbody tr{
     box-shadow:0 2px rgba(100,100,100,.5);
     border-radius:10px
 }
+
 tbody tr:hover{
     transform:scale(1.025);
     background-color:rgb(242, 191, 67);
     transition:.2s ease-in-out
+    border-radius: 1.5em;
 }
+
 tbody tr td:nth-child(2) p{
     display:inline-block;
     transform:translateY(-.5em);
@@ -487,6 +506,15 @@ tbody tr td:nth-child(2) p{
 table td:nth-child(2){
     max-width:5em
 }
+
+td.loose{
+    color:red;
+}
+
+td.win{
+    color:green;
+}
+
 
 h1{
   color: white;
@@ -540,6 +568,24 @@ h1{
     right: -30px;
     bottom: -80px;
 }
+
+.overlay {
+    position: absolute;
+    color: #f1f1f1;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 120px;
+    padding-top: 11px;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.match_records td:hover img + .overlay{
+  opacity: 1;
+}
+
 form{
     height: 440px;
     width: 400px;
@@ -554,6 +600,14 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
+
+.overlay_div{
+    display:flex;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: center;
+}
+
 form *{
     font-family: 'Poppins',sans-serif;
     color: rgb(242, 191, 67);
@@ -561,11 +615,39 @@ form *{
     outline: none;
     border: none;
 }
+
+figure h3{
+font-family: 'Poppins',sans-serif;
+    color: rgb(242, 191, 67);
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+h1.mastery{
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
 form h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
+}
+
+form h3.select{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 label{
@@ -768,7 +850,7 @@ svg {
   transition: 0.6s ease-out;
 }
 
-a.buttons_update {
+.buttons_update {
   color: #fff;
   text-decoration: none;
   font-size: 1.6rem;
@@ -776,7 +858,7 @@ a.buttons_update {
   opacity: 0.7;
   transition: all 0.5s;
 }
-a.buttons_update:hover, a.buttons_update:active {
+.buttons_update:hover, .buttons_update:active {
   opacity: 1;
   text-decoration: none;
 }
@@ -840,11 +922,14 @@ a.buttons_update:hover, a.buttons_update:active {
 .red {
   color: red;}
 
+  .match_records_div{
+  padding-top: 3rem;
+  }
   .match_records{
     table-layout: fixed;
     width:50%;
     margin-top:2em;
-    width:50em;
+    width:80em;
     color:#fff;
  
     border: 1px solid #8989ff;
@@ -869,4 +954,90 @@ a.buttons_update:hover, a.buttons_update:active {
 
 .match_records td{
     max-width:8em;
-}  
+    text-align:center;
+}
+
+.cards .card_ figcaption,
+.cards .card:after {
+	position: absolute
+}
+
+.cards .card_ {
+	position: relative
+}
+
+.cards {
+	display: flex;
+	justify-content: center;
+	height: 500px;
+}
+
+
+.cards {
+	flex-flow: row wrap
+}
+
+.cards .card_ {
+	margin: 50px;
+	width: 230px;
+	height: 418px;
+	overflow: hidden;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .8);
+	transform-origin: center top;
+	transform-style: preserve-3d;
+	transform: translateZ(0);
+	transition: .3s
+	padding: 10px;
+}
+
+.cards .card_ img {
+	width: 100%;
+	min-height: 100%
+}
+
+.cards .card_ figcaption {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	padding-bottom: 10px;
+	font-size: 20px;
+	background: 0 0;
+	color: #fff;
+	transform: translateY(100%);
+	transition: .3s
+}
+
+.cards .card_:after {
+	content: '';
+	z-index: 10;
+	width: 200%;
+	height: 100%;
+	top: -90%;
+	left: -20px;
+	opacity: .1;
+	transform: rotate(45deg);
+	background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, .5));
+	transition: .3s
+}
+
+.cards .card_:active,
+.cards .card_:focus,
+.cards .card_:hover {
+	box-shadow: 0 8px 16px 3px rgba(0, 0, 0, .6);
+	transform: translateY(-3px) scale(1.05) rotateX(15deg)
+}
+
+.cards .card_:active figcaption,
+.cards .card_:focus figcaption,
+.cards .card_:hover figcaption {
+	transform: none
+}
+
+.cards .card_:active:after,
+.cards .card_:focus:after,
+.cards .card_:hover:after {
+	transform: rotate(25deg);
+	top: -40%;
+	opacity: .15
+}
