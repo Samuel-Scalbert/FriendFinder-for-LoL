@@ -9,21 +9,23 @@ def match_records(username):
         'https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + username + '?api_key=' + api_key).json()
     if data_summoner is not None and "id" in data_summoner:
         puuid_summoner = data_summoner.get("puuid")
-
+        
+        match_records= []
         matchs_id = requests.get(
             f"https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid_summoner}/ids?queue=420&type=ranked&start=0&count=1&api_key={api_key}").json()
-        for match_id in matchs_id:
+        
+        for match_id in range (5) in matchs_id:
             match = requests.get(
                 "https://europe.api.riotgames.com/lol/match/v5/matches/" + match_id + "?api_key=" + api_key)
             with match as f:
                 print(match)
-                ce_match = f.json()
+                this_match = f.json()
 
-                id = ce_match["metadata"]["matchId"]
+                id = this_match["metadata"]["matchId"]
 
-                for elt in ce_match["info"]["participants"]:
+                for elt in this_match["info"]["participants"]:
 
-                    match_records = []
+                    this_match_records = []
 
                     champion = elt["championName"]
                     kda = (elt["challenges"]["kda"])
@@ -31,17 +33,22 @@ def match_records(username):
                     expenses = elt["goldSpent"]
                     golds = gains - expenses
                     creep_score = elt["neutralMinionsKilled"]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 802bba626740dc2df1957221f6626540d9e7568d
                     dealt = elt["magicDamageDealt"]
                     taken = elt["magicDamageTaken"]
                     magic_damage_update = dealt - taken
 
                     # Final records
-                    match_records.append(id)
-                    match_records.append(champion)
-                    match_records.append(kda)
-                    match_records.append(golds)
-                    match_records.append(creep_score)
-                    match_records.append(magic_damage_update)
+                    this_match_records.append(id)
+                    this_match_records.append(champion)
+                    this_match_records.append(kda)
+                    this_match_records.append(golds)
+                    this_match_records.append(creep_score)
+                    this_match_records.append(magic_damage_update)
 
-                    data = match_records
+                match_records.append(this_match_records)
+                data = match_records
         return data
