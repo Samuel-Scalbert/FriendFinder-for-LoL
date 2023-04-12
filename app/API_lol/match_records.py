@@ -31,20 +31,9 @@ def match_records(username):
                     expenses = elt["goldSpent"]
                     golds = gains - expenses
                     creep_score = elt["neutralMinionsKilled"]
-                    if creep_score < 100:
-                        flash("That doesn't make you a lesser threat.")
-                    if creep_score > 100 < 200:
-                        flash("Keep going strong!")
-                    if creep_score > 200:
-                        flash("And what's next?")
                     dealt = elt["magicDamageDealt"]
                     taken = elt["magicDamageTaken"]
                     magic_damage_update = dealt - taken
-                    if magic_damage_update > 0:
-                        flash("You're a killer, baby!")
-                    else:
-                        flash("Just pull yourself together.")
-                    # messages conditionnels à virer s'ils posent problème au HTML, ce qui ne manquera pas d'arriver vue la non subtilité avec laquelle le template fut pensé
 
                     # Final records
                     match_records.append(id)
