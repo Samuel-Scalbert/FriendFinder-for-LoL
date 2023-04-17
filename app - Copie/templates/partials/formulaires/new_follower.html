@@ -1,0 +1,10 @@
+<form action="{{url_for('add_account')}}" method="post" name="add_account">
+    {{ form.hidden_tag() }}
+
+    <div>
+        <label>Username</label>
+        {{ form.username(class_="form-control", placeholder_="username") }}
+    </div>
+
+    <p><input type="submit" value="Ajouter"></p>
+</form>
