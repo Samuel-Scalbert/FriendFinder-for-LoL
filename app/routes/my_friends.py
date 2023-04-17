@@ -8,6 +8,7 @@ from sqlalchemy import case
 import roman
 from  ..API_lol.API_check import API_check
 from  ..API_lol.winrate_of_the_day import winrate
+from  ..API_lol.data_account import summmoner_opgg
 
 @app.route('/my_friends/add_account', methods=['GET', 'POST'])
 @login_required
@@ -50,7 +51,7 @@ def list_of_friends():
     for i in range(len(list_rank)):
         number = list_rank[i][2]
         number_roman = roman.toRoman(number)
-        list_rank[i] = (list_rank[i][0], list_rank[i][1], number_roman, list_rank[i][3],list_rank[i][4])
+        list_rank[i] = (list_rank[i][0], list_rank[i][1], number_roman, list_rank[i][3],list_rank[i][4], summmoner_opgg(list_rank[i][0]))
     return render_template("pages/my_friends.html", list_rank=list_rank)
 
 @app.route('/my_friends/my_friends/update', methods=['GET'])

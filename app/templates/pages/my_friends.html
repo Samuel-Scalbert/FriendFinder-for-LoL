@@ -19,7 +19,7 @@
                 {% for friend_rank in list_rank %}
                     <tr>
                         <td></td>
-                        <td>{{ friend_rank[0] }}</td>
+                        <td><a href='{{ friend_rank[5] }}'> {{ friend_rank[0] }}</a></td>
                         {% if friend_rank[1]=="IRON" %}
                         <td> <p class="rank iron">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
                         {% elif friend_rank[1]=="BRONZE" %}

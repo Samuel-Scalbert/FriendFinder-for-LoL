@@ -1,6 +1,7 @@
 import requests
 from ..app import api_key
 import roman
+from urllib.parse import quote
 
 def ranking_information(summoner):
     list_summoner_rank = []
@@ -32,3 +33,9 @@ def ranking_information(summoner):
     else:
         list_summoner_rank = []
     return list_summoner_rank
+
+def summmoner_opgg (summoner):
+    player_name = summoner
+    encoded_player_name = quote(player_name)
+    opgg_url = f"https://www.op.gg/summoners/euw/{encoded_player_name}"
+    return opgg_url

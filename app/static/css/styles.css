@@ -616,6 +616,15 @@ form *{
     border: none;
 }
 
+td a{
+    color: white;
+}
+
+td a:hover{
+    color: #C026DD;
+}
+
+
 figure h3{
 font-family: 'Poppins',sans-serif;
     color: rgb(242, 191, 67);

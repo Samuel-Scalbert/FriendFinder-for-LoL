@@ -1,7 +1,5 @@
 import requests
-#from ..app import api_key
-
-api_key = "RGAPI-ccedf9be-d967-4fba-b200-a09887cb94af"
+from ..app import api_key
 
 # Récupère les versions du jeu
 version_patch = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()
