@@ -10,4 +10,3 @@ class Config():
     SQLALCHEMY_ECHO=os.environ.get("SQLALCHEMY_ECHO")
     SECRET_KEY = os.environ.get("SECRET_KEY")
     WTF_CSRF_ENABLE = os.environ.get("WTF_CSRF_ENABLE")
-    api_key = os.environ.get("RGAPI-733512e4-d53d-41d0-9e72-0effd967f013")
