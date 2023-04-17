@@ -1,7 +1,14 @@
 {% extends "partials/conteneur.html" %}
 
 {% block body %}
-<h1>TESTO</h1>
-<img src="https://www.pedagojeux.fr/wp-content/uploads/2019/11/1280x720_LoL.jpg" alt="Italian Trulli">
+<div class="Home">
+    <img class="logo" src="{{ url_for('static', filename='/Logo_04.png') }}" alt="logo_FFLoL"/>
+    {% if current_user.is_authenticated %}
+    <H1>Welcome <a href='{{ url_for('home') }}'class="gradient-text">{{current_user.username}}</a> to Friend Finder for LoL</H1>
+    {% else %}
+    <H1>Welcome to Friend Finder for LoL</H1>
+    <H1>Don't forget to <a href='{{ url_for('login') }}'class="gradient-text">Login </a> or <a href='{{ url_for('add_new_user') }}'class="gradient-text">Create an Account</a></H1>
+    {% endif %}
+</div>
 
 {% endblock %}

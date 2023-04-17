@@ -1,0 +1,25 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+    <div class="box-container">
+    {%for winrate in account_updated%}
+        {%if winrate[0]==None%}
+            <div class="box_wr">
+                <div class="user_wr">{{winrate[1]}}</div>
+                <div class="number_wr">X</div>
+                <div class="text_wr">No Data</div>
+            </div>
+
+        {% else %}
+        <div class="box_wr">
+            <div class="user_wr">{{winrate[2]}}</div>
+            <div class="number_wr green"><canvas id="{{winrate[2]|replace(' ', '')}}"></canvas></div>
+            <div class="text_wr">Winrate for {{winrate[1]}} games</div>
+        </div>
+        <script>
+            generateCircleChart('#{{winrate[2]|replace(' ', '')}}', {{winrate[0]}});
+        </script>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

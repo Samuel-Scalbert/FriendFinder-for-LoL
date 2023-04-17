@@ -1,0 +1,56 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+    <div class="leaderboard">
+        <h1>Here is the list of accounts that you follow</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>00</td>
+                        <td>
+                            Username
+                        </td>
+                        <td>Rank</td>
+                        <td>League Points</td>
+                        <td>LP Gains</td>
+
+                </thead>
+                <tbody>
+                {% for friend_rank in list_rank %}
+                    <tr>
+                        <td></td>
+                        <td><a href='{{ friend_rank[5] }}'> {{ friend_rank[0] }}</a></td>
+                        {% if friend_rank[1]=="IRON" %}
+                        <td> <p class="rank iron">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="BRONZE" %}
+                        <td> <p class="rank bronze">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="SILVER" %}
+                        <td> <p class="rank silver">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="GOLD" %}
+                        <td> <p class="rank gold">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="PLATINUM" %}
+                        <td> <p class="rank plat">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="DIAMOND" %}
+                        <td> <p class="rank diams">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="MASTER" %}
+                        <td> <p class="rank master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% elif friend_rank[1]=="GRANDMASTER" %}
+                        <td> <p class="rank grand_master">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% else %}
+                        <td> <p class="rank chall">{{ friend_rank[1] }} {{ friend_rank[2] }}</p></td>
+                        {% endif %}
+                        <td>{{ friend_rank[3] }}</td>
+                            {% if friend_rank[4] != 0 and friend_rank[4] > 0  %}
+                            <td>+{{ friend_rank[4] }}</td>
+                            {% else %}
+                            <td>{{ friend_rank[4] }}</td>
+                            {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          <div id='buttons_update'>
+            <a class='buttons_update' href='{{ url_for('update_friends') }}'>update</a>
+          </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+
+<h1 class="mastery">Here is the recap of the last 5 games for: <a href="#" class="gradient-text">{{ username }}</a></h1>
+
+<div class="match_records_div">
+    <table class="match_records">
+        <thead><tr><td><p>Match</p></td><td><p>Champion</p></td><td><p>KDA</p></td><td><p>Golds</p></td><td><p>Creep Score</p></td><td><p style="font-size:1em">Damages dealt to<br>Champions</p></td></tr>
+        </thead>
+        <tbody>
+            {% for data in data%}
+            {% if data[7]== True %}
+            <tr><td class="win">{{ data[0] }}</td><td><div class="overlay_div"><img src='https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/{{ data[6] }}.png' alt="{{ data[1] }}"/><div class="overlay">{{ data[1] }}</div></div></td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td><td>{{ data[5] }}</td></tr>
+            {% else %}
+            <tr><td class="loose">{{ data[0] }}</td><td><div class="overlay_div"><img src='https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/{{ data[6] }}.png' alt="{{ data[1] }}"/><div class="overlay">{{ data[1] }}</div></div></td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td><td>{{ data[5] }}</td></tr>
+            {% endif %}
+            {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

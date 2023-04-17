@@ -1,0 +1,21 @@
+{% extends "partials/conteneur.html" %}
+
+{% block body %}
+
+
+<h1 class="mastery">Here is the 5 most played champ for: <a href="#" class="gradient-text">{{ data[0][0] }}</a></h1>
+
+<div class="cards">
+
+    {% for data in data %}
+
+			<figure class="card_">
+			<img src='{{ data[3] }}'/>
+
+			<figcaption><h3>{{ data[1] }} :</h3>{{ '{0:,}'.format(data[2]).replace(',', ' ') }} points</figcaption>
+
+		</figure>
+	{% endfor %}
+	</div>
+
+{% endblock %}
