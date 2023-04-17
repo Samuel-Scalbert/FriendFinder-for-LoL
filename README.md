@@ -1,6 +1,14 @@
 # FriendFinder-for-LoL (FFLoL)
 
-<img src="app/static/Logo_04.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="300" height="300" />
+<img src="app/static/Logo_04.png" alt="" width="300" height="300" />
+
+### 1. [Quick Introduction](#quick-introduction)
+### 2. [Authors](#authors) 
+### 3. [The Application](#the-application) 
+### 4. [The installation guide :](#the-installation-guide)
+### 2. [The .ENV file](#the-env-file)
+### 2. [A step-by-step guide to launching the application for the first time.](#a-step-by-step-guide-to-launching-the-application-for-the-first-time)
+
 
 ## Quick Introduction
 
@@ -24,28 +32,67 @@ The application is divided into 4 tabs:
 
 * The first tab allows you to log in, create an account, or log out of your account. (Author: Samuel)
 
-<img src="app/static/screenshot/home.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
-<img src="app/static/screenshot/create_acc.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
-<img src="app/static/screenshot/logout.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
-<img src="app/static/screenshot/login.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/home.png" alt="" width="600" height="300" />
+<img src="app/static/screenshot/create_acc.png" alt="" width="600" height="300" />
+<img src="app/static/screenshot/logout.png" alt="" width="600" height="300" />
+<img src="app/static/screenshot/login.png" alt="" width="600" height="300" />
 
 * The second tab lets you create a list of friends by adding League of Legends summoner names. You can also see your friends' current rank and win/loss LP, click on their name to view their profile on op.gg, and use the "update" button to check if they played ranked games and see if they won or lost LP. There's also a feature that calculates your friends' winrate per day based on the number of games they played. (Author: Samuel)
 
-<img src="app/static/screenshot/listfriend.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
-<img src="app/static/screenshot/winrate.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/listfriend.png" alt="" width="600" height="300" />
+<img src="app/static/screenshot/winrate.png" alt="" width="600" height="300" />
 
 * The third tab allows you to view your friends' top 5 most played champions and their mastery points. You can hover over the champion image to see the champion name and mastery points. (Author: Maeva)
 
-<img src="app/static/screenshot/mastery.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/mastery.png" alt="" width="600" height="300" />
 
 * The fourth tab lets you retrieve your friend's last 5 matches and view their KDA, gold, minions killed, damage dealt, and champion played (hovering over the champion image shows the champion name). (Author: Anne)
 
-<img src="app/static/screenshot/match.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/match.png" alt="" width="600" height="300" />
 
 The application also includes flash messages to notify the user if everything is working properly or if the API is down, for example.
-<img src="app/static/screenshot/flash.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="1200" height="100" />
+<img src="app/static/screenshot/flash.png" alt="" width="1200" height="100" />
 
-## The .ENV file
+## The installation guide
+
+For Windows user you can follow this step-by-step guide: 
+
+* open a cmd window in a directory :
+```
+C:\Users\desktop\test>
+```
+* clone the repo
+```
+C:\Users\desktop\test>git clone https://github.com/Samuel-Scalbert/FriendFinder-for-LoL.git
+```
+```
+C:\Users\desktop\test>cd FriendFinder-for-LoL
+C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL>
+```
+* install python 3.10 : https://www.python.org/downloads/windows/
+
+* install the virtual env
+```
+C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL>virtualenv env -p python3
+```
+* launch the virtual env
+```
+C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL>cd env/Scripts
+C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL\env\Scripts>activate
+(env) C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL\env\Scripts>cd ../..
+```
+* You dont need to install any database, add the .env file in the root directory next to this README.md and fill it with these variables : [Go to the .env section](#the-env-file)
+* install the requirements
+```
+(env) C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL>pip install -r requirements.txt
+```
+* launch the application
+```
+(env) C:\Users\samsc\OneDrive\Bureau\test\FriendFinder-for-LoL>python run.py
+```
+* **Note: If at the launch you have any problem with the API you should check [this section](#a-step-by-step-guide-to-launching-the-application-for-the-first-time)**
+
+## The ENV file
 
 The .env file contains crucial information for running the application and must include the following variables: 
 * DEBUG=FALSE
@@ -62,7 +109,7 @@ SECRET_KEY = ojzdnaojd
 
 ## A step-by-step guide to launching the application for the first time.
 
-* **Note:If you want to test the application locally, you will need to have an API key available by creating a Riot account here: https://developer.riotgames.com/. Alternatively, you can access the application in the cloud, where the key is changed by the creator every day. Additionally, you can send an email to samuel.scalbert@chartes.psl.eu to request access to the API key. The API key as to be changed in this file : [app.py](app/app.py)**
+* **Note: If you want to test the application locally, you will need to have an API key available by creating a Riot account here: https://developer.riotgames.com/. Alternatively, you can access the application in the cloud, where the key is changed by the creator every day. Additionally, you can send an email to samuel.scalbert@chartes.psl.eu to request access to the API key. The API key as to be changed in this file : [app.py](app/app.py)**
 
 To get started with the application, there is already one pre-filled account called 'touscompte'.
 
