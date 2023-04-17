@@ -1,6 +1,6 @@
-# FriendFinder-for-LoL
+# FriendFinder-for-LoL (FFLoL)
 
-![alt text](app/static/Logo_04.png)
+<img src="app/static/Logo_04.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="300" height="300" />
 
 ## Quick Introduction
 
@@ -10,23 +10,71 @@ Riot Games is an American video game developer and publisher known for creating 
 
 * **Note: We are currently experiencing a delay in receiving the development API key from Riot. As a result, the API key currently in use is a temporary development key, which may cause limited functionality or errors in the application.**
 
+The site is currently hosted on PythonAnywhere at http://sscalbert.pythonanywhere.com/, a cloud-based Python development and hosting environment.
+
 ## Authors
 
 * **Samuel Scalbert** [github](https://github.com/Samuel-Scalbert)
 * **Anne Bugner** [github](https://github.com/arlequinte)
 * **Maëva Tarantini** [github](https://github.com/MaevaTarantini)
 
+## The Application
 
-la description des fonctionnalités de l'application (il est possible de mettre des captures d'écran, des schémas, etc.)
-variables à mettre dans .env, avec une description de la valeur à leur attribuer ou une valeur par défaut à mettre
-un pas à pas pour lancer l'application la première fois
-les instructions pour lancer l'application hors première fois
-Les instructions d'installation et de lancement de l'application doivent être le plus précises possibles, et sont pour la plupart évidentes. Il faut se mettre à la place d'une personne qui n'y connaît rien et qui doit installer puis lancer une application en Python. Des exemples d'étapes:
+The application is divided into 4 tabs:
 
-cloner le dépôt
-installer Python 3.X
-installer une base de données
-installer en environnement virtuel, le lancer
-quelles variables dans le .env?
-installer les requirements
-lancer run.py
+* The first tab allows you to log in, create an account, or log out of your account. (Author: Samuel)
+
+<img src="app/static/screenshot/home.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/create_acc.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/logout.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/login.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+
+* The second tab lets you create a list of friends by adding League of Legends summoner names. You can also see your friends' current rank and win/loss LP, click on their name to view their profile on op.gg, and use the "update" button to check if they played ranked games and see if they won or lost LP. There's also a feature that calculates your friends' winrate per day based on the number of games they played. (Author: Samuel)
+
+<img src="app/static/screenshot/listfriend.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+<img src="app/static/screenshot/winrate.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+
+* The third tab allows you to view your friends' top 5 most played champions and their mastery points. You can hover over the champion image to see the champion name and mastery points. (Author: Maeva)
+
+<img src="app/static/screenshot/mastery.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+
+* The fourth tab lets you retrieve your friend's last 5 matches and view their KDA, gold, minions killed, damage dealt, and champion played (hovering over the champion image shows the champion name). (Author: Anne)
+
+<img src="app/static/screenshot/match.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="300" />
+
+The application also includes flash messages to notify the user if everything is working properly or if the API is down, for example.
+<img src="app/static/screenshot/flash.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="1200" height="100" />
+
+## The .ENV file
+
+The .env file contains crucial information for running the application and must include the following variables: 
+* DEBUG=FALSE
+* SQLALCHEMY_DATABASE_URI=sqlite:///data_base.db (note that this line may vary depending on your operating system, as we are currently developing on Windows)
+* WTF_CSRF_ENABLE=True
+* SECRET_KEY=ojzdnaojd. Please be aware that the secret key is accessible in this version of the application, as it only contains accounts created for testing purposes. It is important to note that an online version of the application is also available at this link: http://sscalbert.pythonanywhere.com/.
+
+```
+DEBUG=FALSE 
+SQLALCHEMY_DATABASE_URI=sqlite:///data_base.db
+WTF_CSRF_ENABLE = True 
+SECRET_KEY = ojzdnaojd
+```
+
+## A step-by-step guide to launching the application for the first time.
+
+* **Note:If you want to test the application locally, you will need to have an API key available by creating a Riot account here: https://developer.riotgames.com/. Alternatively, you can access the application in the cloud, where the key is changed by the creator every day. Additionally, you can send an email to samuel.scalbert@chartes.psl.eu to request access to the API key. The API key as to be changed in this file : [app.py](app/app.py)**
+
+To get started with the application, there is already one pre-filled account called 'touscompte'.
+
+This account is following 13 friend accounts that span across all possible ranks in League of Legends, ranging from Challenger (the top 200 players on each server) all the way to Iron, the lowest rank. This allows you to immediately see how the application works with a variety of ranks and skill levels represented in the friend accounts. Of course, you can also create your own account and add your own friends to fully customize the experience.
+
+```
+account name : touscompte
+password: password
+```
+
+1. On the first tab, you can log in, create an account, or log out of your account.
+On the second tab, you can create a list of friends by adding the names of League of Legends summoners. You can view your list of friends and their current rank. 
+2. There's also an update button that allows you to check if your friend has played any ranked games and if they've won or lost LP. You can click on their name to go to their profile on op.gg. Additionally, there's a function that allows you to calculate your friends' win rate by day based on the number of games they've played (author: Samuel).
+3. On the third tab, you can view the top 5 champions played by your friends, and by hovering over each champion's image, you can view the name of the champion and their mastery points (author: Maeva).
+4. On the fourth tab, you can retrieve the last 5 games played by your friends. You can view whether they won or lost, the champion they played, their KDA, gold earned, minions killed, and damage dealt (author: Anne).
