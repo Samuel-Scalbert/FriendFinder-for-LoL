@@ -1,38 +1,42 @@
+# Importation du module requests
 import requests
+
+# Importation de la variable api_key du module app
 from ..app import api_key
 
-# Récupère les versions du jeu
-version_patch = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()
-# Récupère la dernière version du jeu
-version_patch = version_patch[0]
-# Récupère les données des champions en francais a partir de la derniere version du jeu
-# Stocke les données des champions dans la variable data_full_champion
+# Récupération de toutes les versions du jeu dans un dictionnaire
+# Stockage de la première version de la liste (la plus récente) dans la variable version_patch
+version_patch = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+
+# Récupération des données des champions en français à partir de la dernière version du jeu
+# Stockage des données des champions dans la variable data_full_champion
 data_full_champion = requests.get(
     'https://ddragon.leagueoflegends.com/cdn/' + version_patch + '/data/fr_FR/champion.json').json()
-# Stocke les données des champions dans la variable data_champion_by_name
+
+# Stockage des données des champions dans la variable data_champion_by_name
 data_champion_by_name = data_full_champion["data"]
 
-
-# Definition de la fonction get_champion_name_by_id qui récupère le nom d'un champion à partir de son ID
+# Définition de la fonction get_champion_name_by_id qui récupère le nom d'un champion à partir de son ID
 def get_champion_name_by_id(id):
-    # utilisation de la variable globale data_champion_by_name
+    # Utilisation de la variable globale data_champion_by_name
     global data_champion_by_name
-    # On parcourt la liste des champions
+    # Parcours de la liste des champions
     for name in data_champion_by_name:
-        # On vérifie si l'id du champion correspond à l'id du champion recherché
+        # Vérification si l'ID du champion correspond à l'ID du champion recherché
         if data_champion_by_name[name]['key'] == str(id):
-            # Si oui, on retourne le nom du champion
+            # Si c'est le cas, retourne le nom du champion
             return name
+    # Si le nom du champion n'a pas été trouvé, retourne False
     return False
 
-
-# Definition de la fonction afficher_champions
+# Définition de la fonction afficher_champions
 def mastery_recap(summoner_name, champions_count):
-
+    # Récupération des données du joueur
     data_summoner = requests.get(
         f"https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summoner_name}?api_key={api_key}"
     ).json()
 
+    # Vérification d'erreur avec les données du joueur
     if type(data_summoner) == dict and "status" in data_summoner:
         if 403 == data_summoner["status"]["status_code"]:
             print("API key expired.")
@@ -41,12 +45,15 @@ def mastery_recap(summoner_name, champions_count):
             print("Erreur, la requête n'a pas retourné d'id")
             exit()
 
+    # Récupération de l'ID du joueur
     summoner_id = data_summoner.get("id")
 
+    # Récupération des champions et de leur niveau pour le joueur donné
     champions = requests.get(
         f"https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{summoner_id}?api_key={api_key}"
     ).json()
 
+    # Vérification d'erreur avec les données des champions du joueur
     if type(champions) == dict:
         if 403 == champions["status"]["status_code"]:
             print("API key expired.")
@@ -55,13 +62,11 @@ def mastery_recap(summoner_name, champions_count):
         print("Erreur, la variable champions n'est pas une liste")
         exit()
 
+    # Création d'une liste pour stocker les données des champions
     champions_data = []
 
-    # On verifie que le nombre de champions demandé n'est pas superieur au nombre de champions du joueur
+    # Vérification si le nombre de champions demandé n'est pas supérieur au nombre de champions du joueur
     # Si tel est le cas, on ne demande que le nombre de champions du joueur
-
-    # len = length
-    # len(champions) -> récupération de la longueur de la liste champions
     if champions_count > len(champions):
         champions_count = len(champions)
 
