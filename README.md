@@ -16,7 +16,7 @@ Welcome to the Friend Finder for League of Legends Github repository! This is an
 
 Riot Games is an American video game developer and publisher known for creating the popular game League of Legends. League of Legends, commonly abbreviated as LoL, is a multiplayer online battle arena game where players compete against each other using unique champions with special abilities in fast-paced, strategic battles.
 
-* **Note: We are currently experiencing a delay in receiving the development API key from Riot. As a result, the API key currently in use is a temporary development key, which may cause limited functionality or errors in the application.**
+* **Note: We are currently experiencing a delay in receiving the development API key from Riot. As a result, the API key currently in use is a temporary development key, which may cause limited functionality or errors in the application. If the api is down we will receive an email and upload the new api key, feel free to send an email to friendfinderforlol@gmail.com if there is no changement.**
 
 The site is currently hosted on PythonAnywhere at http://sscalbert.pythonanywhere.com/, a cloud-based Python development and hosting environment.
 
