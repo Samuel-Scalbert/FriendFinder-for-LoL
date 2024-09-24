@@ -1,3 +1,5 @@
+#  🛑🛑🛑 THIS APPLICATION IS DEPRECATED SINCE A PATCH NOTE 🛑🛑🛑
+
 # FriendFinder-for-LoL (FFLoL) / http://sscalbert.pythonanywhere.com/
 
 <img src="app/static/Logo_04.png" alt="" width="300" height="300" />
